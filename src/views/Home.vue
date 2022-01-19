@@ -1,18 +1,146 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <img src="@/assets/logo.svg" alt="Logo da página">
+    </header>
+    <div class="main">
+      <background-image/>
+      <section class="formularios">
+        <form action="">
+          <h2>Entre como participante</h2>
+          <input type="text" placeholder="Código da sala" v-model="state.codigo">
+          <button><img src="@/assets/entrar-sala-icone.svg" alt="Icone entrar na sala"> Entrar na sala</button>
+        </form>
+        <div>
+          <span></span>
+          <p>ou</p>
+          <span></span>
+        </div>
+        <form action="">
+          <h2>Crie sua própria sala, de forma fácil</h2>
+          <button class="btn-criar-sala"><img src="@/assets/criar-sala-icone.svg" alt="Icone criar a sala" @click="toCriarSalaPage"> Criar sala</button>
+        </form>
+      </section>
+    </div>
+      <background-itens/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { reactive } from '@vue/reactivity'
+import {useRouter} from 'vue-router'
+import backgroundItens from '../components/Background-itens.vue'
+import backgroundImage from '../components/Background-image.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: {backgroundItens, backgroundImage},
+  setup(){
+    const state = reactive({
+      codigo: ''
+    })
+    const routes = useRouter()
+
+    function toCriarSalaPage(){
+      routes.push({
+        path: '/criar'
+      })
+    }
+
+    return{
+      state,
+      toCriarSalaPage
+    }
   }
 }
 </script>
+
+<style scoped>
+
+.home header{
+  margin-bottom: 50px;
+}
+
+.home header img{
+  margin: 30px 0 0 150px;
+}
+
+.main{
+  display: flex;
+}
+
+
+.formularios{
+  margin: 80px auto;
+}
+
+.formularios form{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.formularios form h2{
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+.formularios form input{
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-color: grey;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+.formularios div{
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  align-items: center;
+}
+
+.formularios span{
+  border-bottom: 1px solid black;
+  width: 160px;
+}
+
+.formularios p{
+  margin: 10px;
+}
+
+.formularios form button{
+  font-family: 'Poppins', sans-serif;
+  background-color: #0555e9c0;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-color: grey;
+  border-radius: 5px;
+  border-style: solid;
+  color: white;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.formularios form button img{
+  margin-right: 10px;
+}
+
+.formularios .btn-criar-sala{
+  background-color: white;
+  color: #0555e9c0;
+  border-style: solid;
+  border-color: #0555e9c0;
+}
+
+.formularios form button, .formularios form input{
+  font-size: 16px;
+}
+
+</style>

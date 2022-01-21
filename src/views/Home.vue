@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <header>
-      <img src="@/assets/logo.svg" alt="Logo da página">
-    </header>
+    <logo/>
     <div class="main">
       <background-image/>
       <section class="formularios">
@@ -32,10 +30,11 @@
 import { reactive } from '@vue/reactivity'
 import backgroundItens from '../components/Background-itens.vue'
 import backgroundImage from '../components/Background-image.vue'
+import Logo from '../components/Logo.vue'
 
 export default {
   name: 'Home',
-  components: {backgroundItens, backgroundImage},
+  components: {backgroundItens, backgroundImage, Logo},
   setup(){
     const state = reactive({
       codigo: ''
@@ -57,18 +56,9 @@ a{
   font-family: 'Poppins', sans-serif;
 }
 
-.home header{
-  margin-bottom: 50px;
-}
-
-.home header img{
-  margin: 30px 0 0 150px;
-}
-
 .main{
   display: flex;
 }
-
 
 .formularios{
   margin: 80px auto;

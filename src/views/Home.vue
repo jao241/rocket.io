@@ -9,7 +9,7 @@
         <form action="">
           <h2>Entre como participante</h2>
           <input type="text" placeholder="Código da sala" v-model="state.codigo">
-          <button><img src="@/assets/entrar-sala-icone.svg" alt="Icone entrar na sala"> Entrar na sala</button>
+          <button class="button"><img src="@/assets/entrar-sala-icone.svg" alt="Icone entrar na sala"> Entrar na sala</button>
         </form>
         <div>
           <span></span>
@@ -18,7 +18,9 @@
         </div>
         <form action="">
           <h2>Crie sua própria sala, de forma fácil</h2>
-          <button class="btn-criar-sala"><img src="@/assets/criar-sala-icone.svg" alt="Icone criar a sala" @click="toCriarSalaPage"> Criar sala</button>
+            <router-link to="/criar" class="button btn-criar-sala">
+              <img src="@/assets/criar-sala-icone.svg" alt="Icone criar a sala"> Criar sala
+            </router-link>
         </form>
       </section>
     </div>
@@ -28,7 +30,6 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import {useRouter} from 'vue-router'
 import backgroundItens from '../components/Background-itens.vue'
 import backgroundImage from '../components/Background-image.vue'
 
@@ -39,23 +40,22 @@ export default {
     const state = reactive({
       codigo: ''
     })
-    const routes = useRouter()
-
-    function toCriarSalaPage(){
-      routes.push({
-        path: '/criar'
-      })
-    }
 
     return{
       state,
-      toCriarSalaPage
     }
   }
 }
 </script>
 
 <style scoped>
+
+a{
+  display: flex;
+  text-decoration: none;
+  color: #3485FF;
+  font-family: 'Poppins', sans-serif;
+}
 
 .home header{
   margin-bottom: 50px;
@@ -112,7 +112,22 @@ export default {
   margin: 10px;
 }
 
-.formularios form button{
+.formularios form button img{
+  margin-right: 10px;
+}
+
+.formularios .btn-criar-sala{
+  background-color: white;
+  color: #0555e9c0;
+  border-style: solid;
+  border-color: #0555e9c0;
+}
+
+.formularios form button, .formularios form input{
+  font-size: 16px;
+}
+
+.button{
   font-family: 'Poppins', sans-serif;
   background-color: #0555e9c0;
   padding: 10px;
@@ -128,19 +143,8 @@ export default {
   cursor: pointer;
 }
 
-.formularios form button img{
+.button img{
   margin-right: 10px;
-}
-
-.formularios .btn-criar-sala{
-  background-color: white;
-  color: #0555e9c0;
-  border-style: solid;
-  border-color: #0555e9c0;
-}
-
-.formularios form button, .formularios form input{
-  font-size: 16px;
 }
 
 </style>

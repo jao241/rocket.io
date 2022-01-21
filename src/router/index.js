@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/criar',
-    name: 'new',
+    name: 'CriarSala',
     component: CriarSala
   }
 ]

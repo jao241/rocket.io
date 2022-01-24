@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <logo/>
     <div class="main">
       <background-image/>

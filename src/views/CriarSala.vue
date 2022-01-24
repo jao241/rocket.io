@@ -7,8 +7,8 @@
         <form action="">
           <h2>Crie sua própria sala</h2>
           <input type="password" name="" id="" placeholder="Insira uma senha">
-          <router-link to="/" class="button">
-            <img src="" alt=""> Criar sala
+          <router-link to="/sala" class="button">
+            <img src="@/assets/criar-sala-white-icone.svg" alt="criar sala"> Criar sala
           </router-link>
        </form>
       </section>

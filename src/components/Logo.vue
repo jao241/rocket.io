@@ -6,11 +6,11 @@
 
 <style scoped>
 
-.home header{
+header{
   margin-bottom: 50px;
 }
 
-.home header img{
+header img{
   margin: 30px 0 0 150px;
 }
 
